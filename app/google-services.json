@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "145313473762",
+    "firebase_url": "https://upax-colaborations.firebaseio.com",
+    "project_id": "upax-colaborations",
+    "storage_bucket": "upax-colaborations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145313473762:android:ecd8e9200155cb2b152abb",
+        "android_client_info": {
+          "package_name": "axian.upax.colaboradores"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145313473762-8g3unn9jhdc5dr91sbsl03l45qtf92pk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYhfHJlD6nqKPEgzpFyNTnQZjQeUGheFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145313473762-8g3unn9jhdc5dr91sbsl03l45qtf92pk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
