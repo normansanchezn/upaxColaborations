@@ -32,20 +32,22 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         auth = FirebaseAuth.getInstance()
-
         createRequest()
 
-        iv_button_auth.setOnClickListener { signIn() }
+        iv_button_auth.setOnClickListener {
+            // signIn()
+            startActivity(Intent(this, Home::class.java))
+        }
 
     }
 
-    override fun onStart() {
+    /*override fun onStart() {
         super.onStart()
         val currentUser = auth?.currentUser
 
         if(currentUser!=null)
             startActivity(Intent(this, Home::class.java))
-    }
+    }*/
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
