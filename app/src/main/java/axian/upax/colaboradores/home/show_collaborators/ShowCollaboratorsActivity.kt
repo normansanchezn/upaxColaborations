@@ -1,6 +1,7 @@
 package axian.upax.colaboradores.home.show_collaborators
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,7 +21,6 @@ class ShowCollaboratorsActivity : AppCompatActivity() {
     private lateinit var rvListContact: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,13 +44,22 @@ class ShowCollaboratorsActivity : AppCompatActivity() {
     }
 
     private fun mockListContacts(){
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
-        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com"))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
+        mockListContacts.add(ItemListContact("Norman", "normansanchezn@gmail.com",19.42847f,-99.12766f))
     }
 
     inner class ContactAdapter(private val listContacts : MutableList<ItemListContact>, private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
@@ -63,6 +72,13 @@ class ShowCollaboratorsActivity : AppCompatActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.nameContact.text = listContacts[position].nameContact
             holder.contact.text = listContacts[position].contactContact
+
+            holder.itemView.setOnClickListener {
+                val intentMaps = Intent(context, UbicationCollaboratorActivity::class.java)
+                intentMaps.extras?.putFloat("latContact", listContacts[position].latContact)
+                intentMaps.extras?.putFloat("latContact", listContacts[position].longContact)
+                startActivity(intentMaps)
+            }
         }
     }
 

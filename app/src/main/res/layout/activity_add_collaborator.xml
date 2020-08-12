@@ -7,7 +7,7 @@
     tools:context=".home.add_collaborator.AddCollaboratorActivity">
 
     <EditText
-        android:id="@+id/etNombreContact"
+        android:id="@+id/etNombreContacto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/etContacto"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -32,7 +32,7 @@
         android:hint="@string/contact_add"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombreContact" />
+        app:layout_constraintTop_toBottomOf="@+id/etNombreContacto" />
 
     <Button
         android:id="@+id/btn_agregar_colaborador"
