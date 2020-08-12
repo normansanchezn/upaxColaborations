@@ -1,13 +1,12 @@
 package axian.upax.colaboradores.home.add_collaborator
 
 import android.os.Bundle
-import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import android.widget.Toast.makeText
 import androidx.appcompat.app.AppCompatActivity
 import axian.upax.colaboradores.R
-import axian.upax.colaboradores.respository.ContactsRepository
-import axian.upax.colaboradores.respository.model.Contact
+import axian.upax.colaboradores.respository.local.ContactsRepository
+import axian.upax.colaboradores.respository.local.model.Contact
 import kotlinx.android.synthetic.main.activity_add_collaborator.*
 
 class AddCollaboratorActivity : AppCompatActivity(){
@@ -17,7 +16,10 @@ class AddCollaboratorActivity : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_collaborator)
-        repository = ContactsRepository(application)
+        repository =
+            ContactsRepository(
+                application
+            )
 
         btn_agregar_colaborador.setOnClickListener {
             val nameContact = etNombreContacto.text.toString()

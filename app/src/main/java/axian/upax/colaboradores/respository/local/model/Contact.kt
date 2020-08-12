@@ -1,4 +1,4 @@
-package axian.upax.colaboradores.respository.model
+package axian.upax.colaboradores.respository.local.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

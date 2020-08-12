@@ -1,8 +1,8 @@
-package axian.upax.colaboradores.respository.DAO
+package axian.upax.colaboradores.respository.local.DAO
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import axian.upax.colaboradores.respository.model.Contact
+import axian.upax.colaboradores.respository.local.model.Contact
 
 @Dao
 interface ContactDao {

@@ -8,13 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import axian.upax.colaboradores.R
 import axian.upax.colaboradores.models.ItemListContact
-import axian.upax.colaboradores.respository.ContactsRepository
-import axian.upax.colaboradores.respository.model.Contact
+import axian.upax.colaboradores.respository.local.ContactsRepository
 import kotlinx.android.synthetic.main.activity_show_collaborators.*
 import kotlinx.android.synthetic.main.item_contact.view.*
 
@@ -35,7 +33,10 @@ class ShowCollaboratorsActivity : AppCompatActivity() {
         // mockListContacts()
 
         // Get contacts from database
-        repository = ContactsRepository(application)
+        repository =
+            ContactsRepository(
+                application
+            )
         val contacts = repository?.getContacts()
 
 

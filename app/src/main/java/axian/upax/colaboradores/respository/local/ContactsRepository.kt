@@ -1,17 +1,20 @@
-package axian.upax.colaboradores.respository
+package axian.upax.colaboradores.respository.local
 
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import axian.upax.colaboradores.respository.DAO.ContactDao
-import axian.upax.colaboradores.respository.model.Contact
+import axian.upax.colaboradores.respository.local.DAO.ContactDao
+import axian.upax.colaboradores.respository.local.database.ContactsDatabase
+import axian.upax.colaboradores.respository.local.model.Contact
 
 class ContactsRepository(application: Application) {
-    private val contactDao: ContactDao? = axian.upax.colaboradores.respository.database.ContactsDatabase.getInstance(application)?.contactDao()
+    private val contactDao: ContactDao? = ContactsDatabase.getInstance(application)?.contactDao()
 
     fun insert(contact: Contact) {
-        if (contactDao != null) InsertAsyncTask(contactDao).execute(contact)
+        if (contactDao != null) InsertAsyncTask(
+            contactDao
+        ).execute(contact)
     }
 
     fun getContacts(): LiveData<List<Contact>> {
