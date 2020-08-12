@@ -1,6 +1,7 @@
 package axian.upax.colaboradores.home.add_collaborator
 
 import android.os.Bundle
+import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import android.widget.Toast.makeText
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +26,11 @@ class AddCollaboratorActivity : AppCompatActivity(){
             when {
                 nameContact.isEmpty() -> makeText(this, "El nombre no puede estar vacío", LENGTH_SHORT).show()
                 contact.isEmpty() -> makeText(this, "El contacto no puede estar vacío", LENGTH_SHORT).show()
-                else -> saveContact(Contact(nameContact, contact, 19.4978f, -99.1269f))
+                else -> {
+                    saveContact(Contact(nameContact, contact, 19.4978f, -99.1269f))
+                    makeText(this, "Contacto guardado correctamente.", LENGTH_SHORT).show()
+                    this.finish()
+                }
             }
         }
     }

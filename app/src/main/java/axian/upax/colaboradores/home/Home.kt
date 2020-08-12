@@ -23,5 +23,9 @@ class Home : AppCompatActivity() {
         btn_agregar_colaborador.setOnClickListener { startActivity(Intent(this, AddCollaboratorActivity::class.java)) }
 
         btn_mis_colaboradores.setOnClickListener { startActivity(Intent(this, ShowCollaboratorsActivity::class.java)) }
+
+        btn_add_from_file.setOnClickListener {
+            
+        }
     }
 }

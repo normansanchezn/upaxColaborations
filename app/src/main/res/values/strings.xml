@@ -17,4 +17,6 @@
     <string name="contact_add">Contacto</string>
     <string name="add_collaboration">Agregar colaborador</string>
     <string name="title_activity_ubication_collaborator">Map</string>
+    <string name="my_collaborators">Mis colaboradores</string>
+    <string name="add_from_file">Agregar desde archivo</string>
 </resources>

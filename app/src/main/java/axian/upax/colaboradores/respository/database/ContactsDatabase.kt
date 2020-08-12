@@ -12,7 +12,7 @@ abstract class ContactsDatabase : RoomDatabase() {
     abstract fun contactDao(): ContactDao
 
     companion object {
-        private const val DATABASE_NAME = "score_database"
+        private const val DATABASE_NAME = "contacts_database"
         @Volatile
         private var INSTANCE: ContactsDatabase? = null
 
