@@ -9,8 +9,8 @@ import org.jetbrains.annotations.NotNull
 data class Contact(
     @ColumnInfo(name = "name_contact") @NotNull val nameContact: String,
     @ColumnInfo(name = "email_contact") @NotNull val emailContact: String,
-    @ColumnInfo(name = "lat_contact") @NotNull val latContact: Int,
-    @ColumnInfo(name = "lon_contact") @NotNull val lonContact: Int
+    @ColumnInfo(name = "lat_contact") @NotNull val latContact: Float,
+    @ColumnInfo(name = "lon_contact") @NotNull val lonContact: Float
 
 ) {
     companion object {

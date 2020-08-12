@@ -8,39 +8,64 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import axian.upax.colaboradores.R
 import axian.upax.colaboradores.models.ItemListContact
+import axian.upax.colaboradores.respository.ContactsRepository
+import axian.upax.colaboradores.respository.model.Contact
 import kotlinx.android.synthetic.main.activity_show_collaborators.*
 import kotlinx.android.synthetic.main.item_contact.view.*
 
 class ShowCollaboratorsActivity : AppCompatActivity() {
 
     private var mockListContacts: MutableList<ItemListContact> = mutableListOf()
+    private var listContactsFromDb: MutableList<ItemListContact> = mutableListOf()
     private lateinit var rvListContact: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private var repository: ContactsRepository? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_collaborators)
 
         // Create mock for contacts
-        mockListContacts()
+        // mockListContacts()
+
+        // Get contacts from database
+        repository = ContactsRepository(application)
+        val contacts = repository?.getContacts()
+
 
         // Validation if contacts exist
-        if (mockListContacts.size != 0)
+        // if (mockListContacts.size != 0) tv_holder.visibility = View.GONE
+        if (contacts?.value != null){
             tv_holder.visibility = View.GONE
+            contacts?.value!!.forEach { contact ->
+                listContactsFromDb.add(ItemListContact(
+                    contacts.value!![contact.contactId].nameContact,
+                    contacts.value!![contact.contactId].emailContact,
+                    contacts.value!![contact.contactId].latContact,
+                    contacts.value!![contact.contactId].lonContact
+                ))
+            }
+        }
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = ContactAdapter(mockListContacts, this)
-
+        // viewAdapter = ContactAdapter(mockListContacts, this)
+        viewAdapter = ContactAdapter(listContactsFromDb, this)
         rvListContact = findViewById<RecyclerView>(R.id.rvContacts).apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
     }
 
     private fun mockListContacts(){

@@ -17,7 +17,6 @@ class AddCollaboratorActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_collaborator)
         repository = ContactsRepository(application)
-        val contacts = repository?.getContacts()
 
         btn_agregar_colaborador.setOnClickListener {
             val nameContact = etNombreContacto.text.toString()
@@ -26,9 +25,14 @@ class AddCollaboratorActivity : AppCompatActivity(){
             when {
                 nameContact.isEmpty() -> makeText(this, "El nombre no puede estar vacío", LENGTH_SHORT).show()
                 contact.isEmpty() -> makeText(this, "El contacto no puede estar vacío", LENGTH_SHORT).show()
-                else -> saveContact(Contact(nameContact, contact, 1, 1))
+                else -> saveContact(Contact(nameContact, contact, 19.4978f, -99.1269f))
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        this.finish()
     }
 
     private fun saveContact(contact: Contact) {

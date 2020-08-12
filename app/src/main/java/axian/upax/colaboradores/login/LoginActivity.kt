@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
 
         iv_button_auth.setOnClickListener {
             // signIn()
+            this.finish()
             startActivity(Intent(this, Home::class.java))
         }
 
