@@ -12,11 +12,15 @@ import axian.upax.colaboradores.respository.remote.services.ResponseContactServi
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import kotlinx.android.synthetic.main.activity_home.*
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.*
+import java.net.URL
+import java.net.URLConnection
 
 class Home : AppCompatActivity() {
     companion object {
@@ -57,9 +61,33 @@ class Home : AppCompatActivity() {
                 if (response!!.code() == 200){
                     val responseBody = response.body()
                     // Toast.makeText(applicationContext, "${responseBody.data}", Toast.LENGTH_SHORT).show()
+                    val fileGetString = responseBody.data
+                    val jsonObject = JSONObject(fileGetString)
+                    val newFile = File("descarga.zip")
 
+                    downloadFile(jsonObject["file"] as String, newFile)
                 }
             }
         })
+    }
+
+    private fun downloadFile(url: String, outputFile: File) {
+        try {
+            val u = URL(url)
+            val conn: URLConnection = u.openConnection()
+            val contentLength: Int = conn.getContentLength()
+            val stream = DataInputStream(u.openStream())
+            val buffer = ByteArray(contentLength)
+            stream.readFully(buffer)
+            stream.close()
+            val fos = DataOutputStream(FileOutputStream(outputFile))
+            fos.write(buffer)
+            fos.flush()
+            fos.close()
+        } catch (e: FileNotFoundException) {
+            return
+        } catch (e: IOException) {
+            return
+        }
     }
 }
